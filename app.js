@@ -29,7 +29,7 @@ mongoose.set('useUnifiedTopology', true);
 // connect to mongo
 mongoose
 	// .connect('mongodb://localhost/yelpCamp')
-	.connect('mongodb+srv://agata:pEG0ERtfvMc0SD5J@cluster0-or3bu.mongodb.net/yelpcamp?retryWrites=true&w=majority')
+	.connect(process.env.DATABASEURL)
 	.then(console.log('mongoose connected'))
 	.catch((err) => console.log('error connecting mongoose', err));
 
