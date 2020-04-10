@@ -21,6 +21,12 @@ const campgroundsRoutes = require('./routes/campgrounds'),
 // once established so where this code is called is not a problem.
 // seedDB();
 
+// set up mongo environment variable
+// if connection is from heroku, this has been set up in the config there
+// otherwise we are testing locally and we want to connect to our local db
+// **remember to run mongod if running locally**
+const url = process.env.DATABASEURL || 'mongodb://localhost/yelpCamp';
+
 // MONGOOSE configuration- all these are required so mongoose runs without any errors, copied from mongoose website
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
@@ -29,7 +35,7 @@ mongoose.set('useUnifiedTopology', true);
 // connect to mongo
 mongoose
 	// .connect('mongodb://localhost/yelpCamp')
-	.connect(process.env.DATABASEURL)
+	.connect(url)
 	.then(console.log('mongoose connected'))
 	.catch((err) => console.log('error connecting mongoose', err));
 
