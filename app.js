@@ -7,6 +7,7 @@ const express = require('express'),
 	LocalStrategy = require('passport-local'),
 	methodOverride = require('method-override'),
 	User = require('./models/user'),
+	PORT = process.env.PORT || 5000,
 	seedDB = require('./seeds');
 
 const campgroundsRoutes = require('./routes/campgrounds'),
@@ -27,7 +28,8 @@ mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
 // connect to mongo
 mongoose
-	.connect('mongodb://localhost/yelpCamp')
+	// .connect('mongodb://localhost/yelpCamp')
+	.connect('mongodb+srv://agata:pEG0ERtfvMc0SD5J@cluster0-or3bu.mongodb.net/yelpcamp?retryWrites=true&w=majority')
 	.then(console.log('mongoose connected'))
 	.catch((err) => console.log('error connecting mongoose', err));
 
@@ -72,4 +74,4 @@ app.use(indexRoutes);
 app.use('/campgrounds', campgroundsRoutes);
 app.use('/campgrounds/:slug/comments', commentsRoutes);
 
-app.listen(3000, console.log('YelpCamp Server running on 3000'));
+app.listen(PORT, console.log(`YelpCamp Server running on ${PORT}`));
