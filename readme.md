@@ -1,6 +1,7 @@
 YelpCamp
 
-Final project for the Web Developer Bootcamp by Colt Steele
+Final project for the Web Developer Bootcamp by Colt Steele.
+
 Live project is on Heroku here https://sleepy-everglades-99325.herokuapp.com/
 
 
