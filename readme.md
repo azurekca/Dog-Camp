@@ -1,6 +1,10 @@
 YelpCamp
 
 Final project for the Web Developer Bootcamp by Colt Steele
+Live project is on Heroku here https://sleepy-everglades-99325.herokuapp.com/
+
+
+Lessons with video number reference to build each step in this project
 
 1 (291)
   - Add landing page
