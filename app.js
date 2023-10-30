@@ -25,7 +25,8 @@ const campgroundsRoutes = require('./routes/campgrounds'),
 // if connection is from heroku, this has been set up in the config there
 // otherwise we are testing locally and we want to connect to our local db
 // **remember to run mongod if running locally**
-const url = process.env.DATABASEURL || 'mongodb://localhost/yelpCamp';
+const connectionString = process.env.DATABASEURL || 'mongodb://localhost/yelpCamp';
+console.info(`mongodb url: ${connectionString}`);
 
 // MONGOOSE configuration- all these are required so mongoose runs without any errors, copied from mongoose website
 mongoose.set('useNewUrlParser', true);
@@ -34,8 +35,7 @@ mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
 // connect to mongo
 mongoose
-	// .connect('mongodb://localhost/yelpCamp')
-	.connect(url)
+	.connect(connectionString)
 	.then(console.log('mongoose connected'))
 	.catch((err) => console.log('error connecting mongoose', err));
 
@@ -50,9 +50,9 @@ app.use(flash()); // this is all we have to do to set up flash because we alread
 // Colt doesn't explain what the last two settings do, for now i'm just copy/pasting these settings to get this to work
 app.use(
 	require('express-session')({
-		secret            : 'Khan is still the greatest', // this is a random phrase used for encryption
-		resave            : false,
-		saveUninitialized : false
+		secret: 'Khan is still the greatest', // this is a random phrase used for encryption
+		resave: false,
+		saveUninitialized: false
 	})
 );
 
